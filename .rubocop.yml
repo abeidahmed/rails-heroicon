@@ -1,13 +1,162 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 3.0
 
-Style/StringLiterals:
+Bundler/OrderedGems:
+  Enabled: false
+  ConsiderPunctuation: true
+
+#################### Layout ###########################
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  StyleGuide: '#empty-lines-around-attribute-accessor'
   Enabled: true
-  EnforcedStyle: double_quotes
+
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+#################### Lint ##################################
+
+Lint/AmbiguousBlockAssociation:
+  StyleGuide: '#syntax'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Lint/MissingSuper:
+  Enabled: true
+  Exclude:
+    - 'app/components/**/*'
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/EmptyBlock:
+  Enabled: true
+
+Lint/EmptyClass:
+  Enabled: true
+
+Lint/FloatComparison:
+  StyleGuide: '#float-comparison'
+  Enabled: true
+
+Lint/SelfAssignment:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+#################### Metrics ###############################
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  StyleGuide: '#short-methods'
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  StyleGuide: '#too-many-params'
+  Enabled: false
+
+#################### Naming ##############################
+
+Naming/PredicateName:
+  StyleGuide: '#bool-methods-qmark'
+  Enabled: true
+  ForbiddenPrefixes:
+    - is_
+  Exclude:
+    - 'spec/**/*'
+
+#################### Style ###############################
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
-Layout/LineLength:
-  Max: 120
+Style/HashAsLastArrayItem:
+  StyleGuide: '#hash-literal-as-last-array-item'
+  Enabled: true
+  EnforcedStyle: no_braces
+
+Style/HashSyntax:
+  StyleGuide: '#hash-literals'
+  Enabled: true
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/RedundantFetchBlock:
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code'
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  StyleGuide: '#no-explicit-rb-to-require'
+  Enabled: true
+
+Style/ReturnNil:
+  Enabled: true
+
+Style/SingleArgumentDig:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  StyleGuide: '#consistent-string-literals'
+  Enabled: true
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/TrailingCommaInArguments:
+  StyleGuide: '#no-trailing-params-comma'
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  StyleGuide: '#no-trailing-array-commas'
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInBlockArgs:
+  Enabled: true
+
+Style/RegexpLiteral:
+  Enabled: false
