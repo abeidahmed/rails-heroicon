@@ -2,7 +2,7 @@ AllCops:
   DisplayStyleGuide: true
   ExtraDetails: true
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 2.7.2
 
 Bundler/OrderedGems:
   Enabled: false

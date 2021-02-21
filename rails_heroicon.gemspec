@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "A set of free MIT-licensed high-quality SVG icons for your rails app."
   spec.homepage      = "https://github.com/abeidahmed/rails-heroicon"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.2")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
