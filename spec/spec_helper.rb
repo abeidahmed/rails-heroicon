@@ -1,5 +1,4 @@
 require "rails_heroicon"
-require "rails_heroicon/data_attributes"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
