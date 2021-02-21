@@ -7,6 +7,7 @@ module RailsHeroicon
       @options = options
       @size = options[:size]
       @variant = variant.to_s
+      @options.merge!(a11y)
     end
 
     def to_svg
@@ -30,6 +31,18 @@ module RailsHeroicon
       attrs = ""
       @options.each { |attr, value| attrs += "#{attr}=\"#{value}\" " }
       attrs.strip
+    end
+
+    def a11y
+      accessible = {}
+
+      if @options[:"aria-label"].nil? && @options["aria-label"].nil?
+        accessible[:"aria-hidden"] = "true"
+      else
+        accessible[:role] = "img"
+      end
+
+      accessible
     end
   end
 end

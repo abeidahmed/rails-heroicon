@@ -43,5 +43,18 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.to_svg).not_to match(/variant="outline"/)
     end
+
+    it "sets aria-hidden to true if aria-label is not passed" do
+      icon = RailsHeroicon::RailsHeroicon.new("user")
+
+      expect(icon.to_svg).to match(/aria-hidden="true"/)
+    end
+
+    it "sets role to img if aria-label is passed" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", "aria-label": "icon")
+
+      expect(icon.to_svg).not_to match(/aria-hidden="true"/)
+      expect(icon.to_svg).to match(/role="img"/)
+    end
   end
 end
