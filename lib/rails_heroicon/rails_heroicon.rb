@@ -5,6 +5,8 @@ module RailsHeroicon
   class RailsHeroicon
     VARIANTS = %w[outline solid].freeze
 
+    attr_reader :options
+
     def initialize(icon, variant: "outline", size: nil, data: nil, **options)
       raise UndefinedVariant unless VARIANTS.include?(variant.to_s)
 
@@ -27,8 +29,6 @@ module RailsHeroicon
       "<svg #{html_attributes}>#{svg_path}</svg>"
     end
 
-    private
-
     def svg_path
       file_path = if @variant == "solid"
                     "#{SOLID_ICON_PATH}/#{@icon}.svg"
@@ -40,8 +40,10 @@ module RailsHeroicon
 
       file = File.read(file_path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file)
-      doc.at_css("svg").children
+      doc.at_css("svg").children.to_html
     end
+
+    private
 
     def html_attributes
       attrs = ""
