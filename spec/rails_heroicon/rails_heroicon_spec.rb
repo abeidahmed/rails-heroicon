@@ -37,5 +37,11 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.to_svg).to match(/class="text-red-600"/)
     end
+
+    it "does not have the variant attribute" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
+
+      expect(icon.to_svg).not_to match(/variant="outline"/)
+    end
   end
 end
