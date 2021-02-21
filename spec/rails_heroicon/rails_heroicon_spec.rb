@@ -49,7 +49,9 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.to_svg).not_to match(/size="24"/)
     end
+  end
 
+  describe "accessibility" do
     it "sets aria-hidden to true if aria-label is not passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
