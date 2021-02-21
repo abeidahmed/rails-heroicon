@@ -2,11 +2,11 @@ require "nokogiri"
 
 module RailsHeroicon
   class RailsHeroicon
-    def initialize(icon, variant: "outline", size: 24, **options)
+    def initialize(icon, variant: "outline", size: nil, **options)
       @icon = icon.to_s
       @variant = variant.to_s
       @options = options
-      @size = size
+      @size = icon_size_with(size)
 
       @options.merge!(a11y)
       @options.merge!({
@@ -53,6 +53,16 @@ module RailsHeroicon
 
     def view_box
       "0 0 #{@size} #{@size}"
+    end
+
+    def icon_size_with(size)
+      if size
+        size
+      elsif @variant == "outline" && size.nil?
+        24
+      elsif @variant == "solid" && size.nil?
+        20
+      end
     end
   end
 end

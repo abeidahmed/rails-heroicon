@@ -62,9 +62,35 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       expect(icon.to_svg).not_to match(/aria-hidden="true"/)
       expect(icon.to_svg).to match(/role="img"/)
     end
+  end
 
-    it "sets the viewBox, height, and width attribute" do
-      icon = RailsHeroicon::RailsHeroicon.new("user", size: 24)
+  describe "sizes" do
+    it "size defaults to 24 if variant is outline" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
+
+      expect(icon.to_svg).to match(/viewBox="0 0 24 24"/)
+      expect(icon.to_svg).to match(/height="24"/)
+      expect(icon.to_svg).to match(/width="24"/)
+    end
+
+    it "size does not default to 24 if user has explicitly stated" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline", size: 20)
+
+      expect(icon.to_svg).to match(/viewBox="0 0 20 20"/)
+      expect(icon.to_svg).to match(/height="20"/)
+      expect(icon.to_svg).to match(/width="20"/)
+    end
+
+    it "size defaults to 20 if variant is solid" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
+
+      expect(icon.to_svg).to match(/viewBox="0 0 20 20"/)
+      expect(icon.to_svg).to match(/height="20"/)
+      expect(icon.to_svg).to match(/width="20"/)
+    end
+
+    it "size does not default to 20 if user has explicitly stated" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid", size: 24)
 
       expect(icon.to_svg).to match(/viewBox="0 0 24 24"/)
       expect(icon.to_svg).to match(/height="24"/)
