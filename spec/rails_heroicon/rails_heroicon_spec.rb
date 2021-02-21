@@ -26,13 +26,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
   end
 
   describe "#to_svg" do
-    it "asserts the icon" do
+    it "sets the icon" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
       expect(icon.to_svg).to match(/svg/)
     end
 
-    it "asserts the html attributes passed" do
+    it "sets the html attributes passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user", class: "text-red-600")
 
       expect(icon.to_svg).to match(/class="text-red-600"/)
