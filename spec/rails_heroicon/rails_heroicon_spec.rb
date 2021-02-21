@@ -23,6 +23,12 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.instance_variable_get(:@size)).to eq(24)
     end
+
+    it "raises if variant is undefined" do
+      expect do
+        RailsHeroicon::RailsHeroicon.new("user", variant: "unknown")
+      end.to raise_error(RailsHeroicon::UndefinedVariant, "Variant should be one of outline, solid")
+    end
   end
 
   describe "#to_svg" do

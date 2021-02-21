@@ -1,8 +1,13 @@
 require "nokogiri"
+require_relative "errors"
 
 module RailsHeroicon
   class RailsHeroicon
+    VARIANTS = %w[outline solid].freeze
+
     def initialize(icon, variant: "outline", size: nil, data: nil, **options)
+      raise UndefinedVariant unless VARIANTS.include?(variant.to_s)
+
       @icon = icon.to_s
       @variant = variant.to_s
       @options = options
