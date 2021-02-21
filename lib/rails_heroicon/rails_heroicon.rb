@@ -40,7 +40,7 @@ module RailsHeroicon
 
       file = File.read(file_path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file)
-      doc.at_css("svg").inner_html
+      doc.at_css("svg").children
     end
 
     def html_attributes
