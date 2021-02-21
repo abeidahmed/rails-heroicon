@@ -32,6 +32,12 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       expect(icon.to_svg).to match(/svg/)
     end
 
+    it "sets the svg version" do
+      icon = RailsHeroicon::RailsHeroicon.new("user")
+
+      expect(icon.to_svg).to match(/version="1.1"/)
+    end
+
     it "sets the html attributes passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user", class: "text-red-600")
 

@@ -12,7 +12,8 @@ module RailsHeroicon
       @options.merge!({
         viewBox: view_box,
         height: @size,
-        width: @size
+        width: @size,
+        version: "1.1"
       })
     end
 
