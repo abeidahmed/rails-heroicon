@@ -10,16 +10,15 @@ module RailsHeroicon
     end
 
     def to_svg
-      "<svg #{html_attributes}>#{find_svg}</svg>"
+      "<svg #{html_attributes}>#{svg_path}</svg>"
     end
 
     private
 
-    def find_svg
+    def svg_path
       file = File.read("#{SOLID_ICON_PATH}/#{@icon}.svg")
       doc = Nokogiri::HTML::DocumentFragment.parse(file)
-      svg = doc.at_css("path")
-      svg.to_html
+      doc.at_css("svg").inner_html
     end
 
     def html_attributes
