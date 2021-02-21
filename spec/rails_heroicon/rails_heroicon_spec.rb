@@ -44,6 +44,12 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       expect(icon.to_svg).not_to match(/variant="outline"/)
     end
 
+    it "does not have the size attribute" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", size: 24)
+
+      expect(icon.to_svg).not_to match(/size="24"/)
+    end
+
     it "sets aria-hidden to true if aria-label is not passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
@@ -55,6 +61,14 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.to_svg).not_to match(/aria-hidden="true"/)
       expect(icon.to_svg).to match(/role="img"/)
+    end
+
+    it "sets the viewBox, height, and width attribute" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", size: 24)
+
+      expect(icon.to_svg).to match(/viewBox="0 0 24 24"/)
+      expect(icon.to_svg).to match(/height="24"/)
+      expect(icon.to_svg).to match(/width="24"/)
     end
   end
 end

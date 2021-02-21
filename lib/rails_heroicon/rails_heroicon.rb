@@ -2,12 +2,18 @@ require "nokogiri"
 
 module RailsHeroicon
   class RailsHeroicon
-    def initialize(icon, variant: "outline", **options)
+    def initialize(icon, variant: "outline", size: 24, **options)
       @icon = icon.to_s
-      @options = options
-      @size = options[:size]
       @variant = variant.to_s
+      @options = options
+      @size = size
+
       @options.merge!(a11y)
+      @options.merge!({
+        viewBox: view_box,
+        height: @size,
+        width: @size
+      })
     end
 
     def to_svg
@@ -43,6 +49,10 @@ module RailsHeroicon
       end
 
       accessible
+    end
+
+    def view_box
+      "0 0 #{@size} #{@size}"
     end
   end
 end
