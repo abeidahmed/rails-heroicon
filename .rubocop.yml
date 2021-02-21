@@ -3,6 +3,7 @@ AllCops:
   ExtraDetails: true
   NewCops: enable
   TargetRubyVersion: 2.7.2
+  SuggestExtensions: false
 
 Bundler/OrderedGems:
   Enabled: false
