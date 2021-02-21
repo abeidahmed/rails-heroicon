@@ -32,6 +32,12 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
   end
 
   describe "#to_svg" do
+    it "raise error if icon is not found" do
+      icon = RailsHeroicon::RailsHeroicon.new("fooicon")
+
+      expect { icon.to_svg }.to raise_error(RailsHeroicon::UndefinedIcon, "Couldn't find icon for fooicon")
+    end
+
     it "sets the icon" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 

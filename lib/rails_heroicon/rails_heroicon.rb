@@ -30,12 +30,15 @@ module RailsHeroicon
     private
 
     def svg_path
-      file = if @variant == "solid"
-               File.read("#{SOLID_ICON_PATH}/#{@icon}.svg")
-             else
-               File.read("#{OUTLINE_ICON_PATH}/#{@icon}.svg")
-             end
+      file_path = if @variant == "solid"
+                    "#{SOLID_ICON_PATH}/#{@icon}.svg"
+                  else
+                    "#{OUTLINE_ICON_PATH}/#{@icon}.svg"
+                  end
 
+      raise UndefinedIcon, @icon unless File.exist?(file_path)
+
+      file = File.read(file_path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file)
       doc.at_css("svg").inner_html
     end
