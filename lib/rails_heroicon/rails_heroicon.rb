@@ -25,10 +25,6 @@ module RailsHeroicon
       })
     end
 
-    def to_svg
-      "<svg #{html_attributes}>#{svg_path}</svg>"
-    end
-
     def svg_path
       file_path = if @variant == "solid"
                     "#{SOLID_ICON_PATH}/#{@icon}.svg"
@@ -44,12 +40,6 @@ module RailsHeroicon
     end
 
     private
-
-    def html_attributes
-      attrs = ""
-      @options.each { |attr, value| attrs += "#{attr}=\"#{value}\" " }
-      attrs.strip
-    end
 
     def a11y
       accessible = {}

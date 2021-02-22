@@ -31,41 +31,41 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     end
   end
 
-  describe "#to_svg" do
+  describe "#svg_path" do
     it "raise error if icon is not found" do
       icon = RailsHeroicon::RailsHeroicon.new("fooicon")
 
-      expect { icon.to_svg }.to raise_error(RailsHeroicon::UndefinedIcon, "Couldn't find icon for fooicon")
+      expect { icon.svg_path }.to raise_error(RailsHeroicon::UndefinedIcon, "Couldn't find icon for fooicon")
     end
 
     it "sets the icon" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
-      expect(icon.to_svg).to match(/svg/)
+      expect(icon.svg_path).to match(/path/)
     end
 
     it "sets the svg version" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
-      expect(icon.to_svg).to match(/version="1.1"/)
+      expect(icon.options[:version]).to eq("1.1")
     end
 
     it "sets the html attributes passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user", class: "text-red-600")
 
-      expect(icon.to_svg).to match(/class="text-red-600"/)
+      expect(icon.options[:class]).to eq("text-red-600")
     end
 
     it "does not have the variant attribute" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
 
-      expect(icon.to_svg).not_to match(/variant="outline"/)
+      expect(icon.options.key?("variant")).to be_falsy
     end
 
     it "does not have the size attribute" do
       icon = RailsHeroicon::RailsHeroicon.new("user", size: 24)
 
-      expect(icon.to_svg).not_to match(/size="24"/)
+      expect(icon.options.key?("size")).to be_falsy
     end
   end
 
@@ -73,14 +73,14 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "sets aria-hidden to true if aria-label is not passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
 
-      expect(icon.to_svg).to match(/aria-hidden="true"/)
+      expect(icon.options[:"aria-hidden"]).to eq("true")
     end
 
     it "sets role to img if aria-label is passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user", "aria-label": "icon")
 
-      expect(icon.to_svg).not_to match(/aria-hidden="true"/)
-      expect(icon.to_svg).to match(/role="img"/)
+      expect(icon.options.key?("aria-hidden")).to be_falsy
+      expect(icon.options[:role]).to eq("img")
     end
   end
 
@@ -88,33 +88,33 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "size defaults to 24 if variant is outline" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
 
-      expect(icon.to_svg).to match(/viewBox="0 0 24 24"/)
-      expect(icon.to_svg).to match(/height="24"/)
-      expect(icon.to_svg).to match(/width="24"/)
+      expect(icon.options[:viewBox]).to eq("0 0 24 24")
+      expect(icon.options[:height]).to eq(24)
+      expect(icon.options[:width]).to eq(24)
     end
 
     it "size does not default to 24 if user has explicitly stated" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline", size: 20)
 
-      expect(icon.to_svg).to match(/viewBox="0 0 20 20"/)
-      expect(icon.to_svg).to match(/height="20"/)
-      expect(icon.to_svg).to match(/width="20"/)
+      expect(icon.options[:viewBox]).to eq("0 0 20 20")
+      expect(icon.options[:height]).to eq(20)
+      expect(icon.options[:width]).to eq(20)
     end
 
     it "size defaults to 20 if variant is solid" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
 
-      expect(icon.to_svg).to match(/viewBox="0 0 20 20"/)
-      expect(icon.to_svg).to match(/height="20"/)
-      expect(icon.to_svg).to match(/width="20"/)
+      expect(icon.options[:viewBox]).to eq("0 0 20 20")
+      expect(icon.options[:height]).to eq(20)
+      expect(icon.options[:width]).to eq(20)
     end
 
     it "size does not default to 20 if user has explicitly stated" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid", size: 24)
 
-      expect(icon.to_svg).to match(/viewBox="0 0 24 24"/)
-      expect(icon.to_svg).to match(/height="24"/)
-      expect(icon.to_svg).to match(/width="24"/)
+      expect(icon.options[:viewBox]).to eq("0 0 24 24")
+      expect(icon.options[:height]).to eq(24)
+      expect(icon.options[:width]).to eq(24)
     end
   end
 end
