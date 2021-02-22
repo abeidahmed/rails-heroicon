@@ -7,28 +7,27 @@ module RailsHeroicon
 
     attr_reader :options
 
-    def initialize(icon, variant: "outline", size: nil, data: nil, **options)
+    def initialize(icon, variant: "outline", size: nil, **options)
       raise UndefinedVariant unless VARIANTS.include?(variant.to_s)
 
       @icon = icon.to_s
       @variant = variant.to_s
       @options = options
       @size = icon_size_with(size)
-      @data = data
 
       @options.merge!(a11y)
       @options.merge!({
-        viewBox: view_box,
+        viewBox: outline? ? "0 0 24 24" : "0 0 20 20",
         height: @size,
         width: @size,
         version: "1.1",
-        fill: variant == "outline" ? "none" : "currentColor",
-        stroke: variant == "solid" ? "none" : "currentColor"
+        fill: outline? ? "none" : "currentColor",
+        stroke: solid? ? "none" : "currentColor"
       })
     end
 
     def svg_path
-      file_path = if @variant == "solid"
+      file_path = if solid?
                     "#{SOLID_ICON_PATH}/#{@icon}.svg"
                   else
                     "#{OUTLINE_ICON_PATH}/#{@icon}.svg"
@@ -55,22 +54,22 @@ module RailsHeroicon
       accessible
     end
 
-    def view_box
-      if @variant == "solid"
-        "0 0 20 20"
-      else
-        "0 0 24 24"
-      end
-    end
-
     def icon_size_with(size)
       if size
         size
-      elsif @variant == "outline" && size.nil?
+      elsif outline? && size.nil?
         24
-      elsif @variant == "solid" && size.nil?
+      elsif solid? && size.nil?
         20
       end
+    end
+
+    def outline?
+      @variant == "outline"
+    end
+
+    def solid?
+      @variant == "solid"
     end
   end
 end
