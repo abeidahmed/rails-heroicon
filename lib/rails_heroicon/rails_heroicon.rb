@@ -36,8 +36,10 @@ module RailsHeroicon
       raise UndefinedIcon, @icon unless File.exist?(file_path)
 
       file = File.read(file_path)
-      doc = Nokogiri::HTML::DocumentFragment.parse(file)
-      doc.at_css("svg").children.to_html
+      doc = Nokogiri::HTML(file)
+      doc.css("path").remove_attr("stroke")
+      doc.css("path").remove_attr("fill")
+      doc.at_css("svg").inner_html
     end
 
     private
