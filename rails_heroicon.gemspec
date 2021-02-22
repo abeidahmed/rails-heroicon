@@ -6,12 +6,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["abeidahmed"]
   spec.email         = ["abeidahmed92@gmail.com"]
 
-  spec.summary       = "A set of free MIT-licensed high-quality SVG icons for your rails app."
+  spec.summary       = "Ruby on Rails view helpers for the awesome Heroicons by Steve Schoger."
   spec.homepage      = "https://github.com/abeidahmed/rails-heroicon"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.2")
-
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/abeidahmed/rails-heroicon"
