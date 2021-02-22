@@ -101,6 +101,9 @@ https://github.com/abeidahmed/rails_heroicon. This project is intended to be a
 safe, welcoming space for collaboration, and contributors are expected to adhere
 to the [code of conduct](https://github.com/abeidahmed/rails-heroicon/blob/main/CODE_OF_CONDUCT.md).
 
+Please read the [CONTRIBUTING.md](https://github.com/abeidahmed/rails-heroicon/blob/main/CONTRIBUTING.md)
+on how to make pull requests.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
