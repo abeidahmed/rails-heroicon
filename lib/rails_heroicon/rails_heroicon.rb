@@ -26,6 +26,7 @@ module RailsHeroicon
       })
     end
 
+    # Finds the svg icon with respect to variant.
     def svg_path
       file_path = if solid?
                     "#{SOLID_ICON_PATH}/#{@icon}.svg"
@@ -56,6 +57,8 @@ module RailsHeroicon
       accessible
     end
 
+    # If the user has explicitly stated the size attribute, then use that. If size attribute is not passed
+    # then default to 24 if variant is outline, else default to 20 if variant is solid.
     def icon_size_with(size)
       if size
         size
