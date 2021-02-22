@@ -100,11 +100,24 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     end
   end
 
+  describe "viewBox" do
+    it "sets the viewBox to 24 if variant is outline" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
+
+      expect(icon.options[:viewBox]).to eq("0 0 24 24")
+    end
+
+    it "sets the viewBox to 20 if variant is solid" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
+
+      expect(icon.options[:viewBox]).to eq("0 0 20 20")
+    end
+  end
+
   describe "sizes" do
     it "size defaults to 24 if variant is outline" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
 
-      expect(icon.options[:viewBox]).to eq("0 0 24 24")
       expect(icon.options[:height]).to eq(24)
       expect(icon.options[:width]).to eq(24)
     end
@@ -112,7 +125,6 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "size does not default to 24 if user has explicitly stated" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline", size: 20)
 
-      expect(icon.options[:viewBox]).to eq("0 0 20 20")
       expect(icon.options[:height]).to eq(20)
       expect(icon.options[:width]).to eq(20)
     end
@@ -120,7 +132,6 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "size defaults to 20 if variant is solid" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
 
-      expect(icon.options[:viewBox]).to eq("0 0 20 20")
       expect(icon.options[:height]).to eq(20)
       expect(icon.options[:width]).to eq(20)
     end
@@ -128,7 +139,6 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "size does not default to 20 if user has explicitly stated" do
       icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid", size: 24)
 
-      expect(icon.options[:viewBox]).to eq("0 0 24 24")
       expect(icon.options[:height]).to eq(24)
       expect(icon.options[:width]).to eq(24)
     end

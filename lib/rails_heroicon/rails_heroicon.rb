@@ -56,7 +56,11 @@ module RailsHeroicon
     end
 
     def view_box
-      "0 0 #{@size} #{@size}"
+      if @variant == "solid"
+        "0 0 20 20"
+      else
+        "0 0 24 24"
+      end
     end
 
     def icon_size_with(size)
