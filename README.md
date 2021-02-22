@@ -1,4 +1,4 @@
-# RailsHeroicon
+# Rails Heroicon ![ci](https://github.com/abeidahmed/rails-heroicon/blob/development/.github/workflows/ci.yml)
 
 Ruby on Rails `view helpers` for the awesome Heroicons by Steve Schoger. To view
 all the icons visit [heroicons](https://heroicons.com/).
