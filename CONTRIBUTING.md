@@ -16,5 +16,5 @@ By participating in this project, you agree to abide by its rules.
 - Make sure the tests are passing `bundle exec rake`
 - Create a new branch: `git checkout -b awesome-feature`
 - Add your changes, tests, and make sure the tests are passing
-- Add an entry to the top of `[CHANGELOG.md](https://github.com/abeidahmed/rails-heroicon/blob/main/CONTRIBUTING.md)`
+- Add an entry to the top of `CHANGELOG.md`
 - Push to your fork and submit a pull request
