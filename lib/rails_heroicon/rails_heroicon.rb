@@ -21,7 +21,9 @@ module RailsHeroicon
         viewBox: view_box,
         height: @size,
         width: @size,
-        version: "1.1"
+        version: "1.1",
+        fill: variant == "outline" ? "none" : "currentColor",
+        stroke: variant == "solid" ? "none" : "currentColor"
       })
     end
 

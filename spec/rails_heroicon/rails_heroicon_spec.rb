@@ -69,6 +69,22 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     end
   end
 
+  describe "fill and stroke" do
+    it "sets the stroke to currentColor and fill as none if variant is outline" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
+
+      expect(icon.options[:stroke]).to eq("currentColor")
+      expect(icon.options[:fill]).to eq("none")
+    end
+
+    it "sets the stroke to none and fill as currentColor if variant is solid" do
+      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
+
+      expect(icon.options[:stroke]).to eq("none")
+      expect(icon.options[:fill]).to eq("currentColor")
+    end
+  end
+
   describe "accessibility" do
     it "sets aria-hidden to true if aria-label is not passed" do
       icon = RailsHeroicon::RailsHeroicon.new("user")
