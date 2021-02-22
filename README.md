@@ -1,6 +1,6 @@
 # RailsHeroicon
 
-A set of free MIT-licensed high-quality SVG icons for your rails app. To view
+Ruby on Rails `view helpers` for the awesome Heroicons by Steve Schoger. To view
 all the icons visit [heroicons](https://heroicons.com/).
 
 > This gem has no official affiliation with Tailwind labs yet.
