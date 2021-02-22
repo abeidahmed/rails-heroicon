@@ -1,4 +1,4 @@
-require_relative "rails_heroicon_helper"
+require_relative "helper"
 
 module RailsHeroicon
   class Railtie < Rails::Railtie
