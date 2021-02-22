@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_heroicon (0.1.0)
+    rails_heroicon (0.1.0.alpha)
       nokogiri (>= 1.11.1)
 
 GEM
