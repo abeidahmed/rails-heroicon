@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_heroicon (0.1.0.alpha)
+    rails_heroicon (0.1.0)
       nokogiri (>= 1.11.1)
 
 GEM
@@ -56,4 +56,4 @@ DEPENDENCIES
   rubocop (~> 1.7)
 
 BUNDLED WITH
-   2.2.7
+   2.2.11
