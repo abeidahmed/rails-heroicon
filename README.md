@@ -96,8 +96,7 @@ However, this can be over-written with the `size` attribute.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/abeidahmed/rails_heroicon. This project is intended to be a
+Bug reports and pull requests are welcome. This project is intended to be a
 safe, welcoming space for collaboration, and contributors are expected to adhere
 to the [code of conduct](https://github.com/abeidahmed/rails-heroicon/blob/main/CODE_OF_CONDUCT.md).
 
