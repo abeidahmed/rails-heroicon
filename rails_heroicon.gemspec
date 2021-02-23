@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "Ruby on Rails view helpers for the awesome Heroicons by Steve Schoger."
   spec.homepage      = "https://github.com/abeidahmed/rails-heroicon"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.2")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.6")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/abeidahmed/rails-heroicon"
