@@ -78,7 +78,7 @@ Any `html` attribute is supported, for eg:
 ### Handling the size of the icon
 
 Normally, if you're just using vanilla heroicons with [tailwindcss](https://tailwindcss.com/),
-you'd set `w-5 h-5` on the class attribute. With `rails_heroicon`, you just
+you'd add `w-5 h-5` as classes on the svg element. With `rails_heroicon`, you just
 need to set the `size` attribute on the helper method.
 
 ```erb
