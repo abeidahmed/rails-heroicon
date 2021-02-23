@@ -60,7 +60,7 @@ This will generate the following html:
 `rails_heroicon` provides 2 variants, `outline` and `solid`, `outline` being
 the default.
 
-To change the variant `<%= heroicon "user", variant: :solid %>`.
+To change the variant `<%= heroicon "user", variant: "solid" %>`.
 
 ### Accessibility
 
