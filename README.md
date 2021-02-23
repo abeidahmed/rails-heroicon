@@ -64,8 +64,8 @@ To change the variant `<%= heroicon "user", variant: "solid" %>`.
 
 ### Accessibility
 
-`rails_heroicon` automatically sets `aria-hidden=true` if `aria-label` is not
-set, and if `aria-label` is set, then `role=img` is set.
+`rails_heroicon` automatically sets `aria-hidden="true"` if `aria-label` is not
+set, and if `aria-label` is set, then `role="img"` is set.
 
 ### HTML attributes
 
