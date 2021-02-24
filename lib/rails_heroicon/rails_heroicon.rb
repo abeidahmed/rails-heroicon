@@ -43,7 +43,7 @@ module RailsHeroicon
     def a11y
       accessible = {}
 
-      if @options[:"aria-label"].nil? && @options["aria-label"].nil?
+      if @options[:"aria-label"].nil? && @options["aria-label"].nil? && @options.dig(:aria, :label).nil?
         accessible[:"aria-hidden"] = "true"
       else
         accessible[:role] = "img"
