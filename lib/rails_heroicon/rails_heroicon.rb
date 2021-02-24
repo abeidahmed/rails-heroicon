@@ -1,4 +1,3 @@
-require "nokogiri"
 require_relative "errors"
 
 module RailsHeroicon
@@ -36,11 +35,7 @@ module RailsHeroicon
 
       raise UndefinedIcon, @icon unless File.exist?(file_path)
 
-      file = File.read(file_path)
-      doc = Nokogiri::HTML(file)
-      doc.css("path").remove_attr("stroke")
-      doc.css("path").remove_attr("fill")
-      doc.at_css("svg").inner_html
+      File.read(file_path)
     end
 
     private
@@ -60,12 +55,12 @@ module RailsHeroicon
     # If the user has explicitly stated the size attribute, then use that. If size attribute is not passed
     # then default to 24 if variant is outline, else default to 20 if variant is solid.
     def icon_size_with(size)
-      if size
-        size
-      elsif outline? && size.nil?
+      if outline? && size.nil?
         24
       elsif solid? && size.nil?
         20
+      else
+        size
       end
     end
 
