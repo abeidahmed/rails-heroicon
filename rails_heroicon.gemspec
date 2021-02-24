@@ -17,4 +17,10 @@ Gem::Specification.new do |spec|
 
   spec.files         = Dir["lib/**/*", "compressed/**/*", "CHANGELOG.md", "LICENSE.txt", "README.md"]
   spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "byebug", ["~> 11.1", ">= 11.1.3"]
+  spec.add_development_dependency "nokogiri", "~> 1.11.1"
+  spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rubocop", "~> 1.7"
 end
