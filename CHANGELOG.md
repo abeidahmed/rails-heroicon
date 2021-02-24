@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0
+
+- Compress svg icons for performance
+- Make lib production ready
+
 ## 0.2.0
 
 - Support ruby >= 2.6.6

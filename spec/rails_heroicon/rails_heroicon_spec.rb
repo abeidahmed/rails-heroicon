@@ -109,6 +109,11 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.options.key?("aria-hidden")).to be_falsy
       expect(icon.options[:role]).to eq("img")
+
+      another_icon = RailsHeroicon::RailsHeroicon.new("user", aria: { label: "icon" })
+
+      expect(another_icon.options.key?("aria-hidden")).to be_falsy
+      expect(another_icon.options[:role]).to eq("img")
     end
   end
 

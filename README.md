@@ -1,9 +1,10 @@
 # Rails Heroicon ![ci](https://github.com/abeidahmed/rails-heroicon/actions/workflows/ci.yml/badge.svg)
 
-Ruby on Rails `view helpers` for the awesome Heroicons by Steve Schoger. To view
+Ruby on Rails `view helpers` for the awesome heroicons by Steve Schoger. To view
 all the icons visit [heroicons](https://heroicons.com/).
 
-> This gem has no official affiliation with Tailwind labs yet.
+> This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
+> yet.
 
 ## Installation
 
@@ -59,12 +60,12 @@ This will generate the following html:
 `rails_heroicon` provides 2 variants, `outline` and `solid`, `outline` being
 the default.
 
-To change the variant `<%= heroicon "user", variant: :solid %>`.
+To change the variant `<%= heroicon "user", variant: "solid" %>`.
 
 ### Accessibility
 
-`rails_heroicon` automatically sets `aria-hidden=true` if `aria-label` is not
-set, and if `aria-label` is set, then `role=img` is set.
+`rails_heroicon` automatically sets `aria-hidden="true"` if `aria-label` is not
+set, and if `aria-label` is set, then `role="img"` is set.
 
 ### HTML attributes
 
@@ -76,9 +77,9 @@ Any `html` attribute is supported, for eg:
 
 ### Handling the size of the icon
 
-Normally, if you're just using vanilla heroicons, you'd set `w-5 h-5` class
-attributes on the svg. With `rails_heroicon`, you just need to set the `size`
-attribute on the icon.
+Normally, if you're just using vanilla heroicons with [tailwindcss](https://tailwindcss.com/),
+you'd add `w-5 h-5` as classes on the svg element. With `rails_heroicon`, you just
+need to set the `size` attribute on the helper method.
 
 ```erb
 <%= heroicon "user", size: 20 %>
@@ -91,13 +92,12 @@ However, this can be over-written with the `size` attribute.
 ## Development
 
 - Clone the repo
-- Run `bundle install`
+- Run `bundle install`, or run `./bin/setup`
 - Run `bundle exec rake` to run the tests to see if it passing
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/abeidahmed/rails_heroicon. This project is intended to be a
+Bug reports and pull requests are welcome. This project is intended to be a
 safe, welcoming space for collaboration, and contributors are expected to adhere
 to the [code of conduct](https://github.com/abeidahmed/rails-heroicon/blob/main/CODE_OF_CONDUCT.md).
 
@@ -110,6 +110,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the RailsHeroicon project's codebases, issue trackers,
+Everyone interacting in the Rails Heroicon project's codebases, issue trackers,
 chat rooms and mailing lists is expected to follow the
 [code of conduct](https://github.com/abeidahmed/rails-heroicon/blob/main/CODE_OF_CONDUCT.md).
