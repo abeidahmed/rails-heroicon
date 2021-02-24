@@ -16,7 +16,5 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/abeidahmed/rails-heroicon/blob/main/CHANGELOG.md"
 
   spec.files         = Dir["lib/**/*", "compressed/**/*", "CHANGELOG.md", "LICENSE.txt", "README.md"]
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 end
