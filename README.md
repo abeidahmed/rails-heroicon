@@ -3,6 +3,8 @@
 Ruby on Rails `view helpers` for the awesome heroicons by Steve Schoger. To view
 all the icons visit [heroicons](https://heroicons.com/).
 
+All icons are included upto heroicons v0.4.2
+
 > This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
 > yet.
 
