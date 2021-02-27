@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["lib/**/*", "compressed/**/*", "CHANGELOG.md", "LICENSE.txt", "README.md"]
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "rails", "~> 5.0"
+
   spec.add_development_dependency "byebug", ["~> 11.1", ">= 11.1.3"]
   spec.add_development_dependency "nokogiri", "~> 1.11.1"
   spec.add_development_dependency "rake", "~> 13.0"
