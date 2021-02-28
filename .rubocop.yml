@@ -39,8 +39,6 @@ Lint/AmbiguousBlockAssociation:
 
 Lint/MissingSuper:
   Enabled: true
-  Exclude:
-    - 'app/components/**/*'
 
 Lint/DuplicateElsifCondition:
   Enabled: true
