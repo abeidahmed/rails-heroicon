@@ -1,4 +1,6 @@
 AllCops:
+  Exclude:
+    - './Gemfile.lock'
   DisplayStyleGuide: true
   ExtraDetails: true
   NewCops: enable
