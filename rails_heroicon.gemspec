@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/abeidahmed/rails-heroicon"
   spec.metadata["changelog_uri"]   = "https://github.com/abeidahmed/rails-heroicon/blob/main/CHANGELOG.md"
 
-  spec.files         = Dir["lib/**/*", "compressed/**/*", "CHANGELOG.md", "LICENSE.txt", "README.md"]
+  spec.files         = Dir["lib/**/*", "compressed/**/*", "LICENSE.txt", "README.md"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails", ">= 0"
