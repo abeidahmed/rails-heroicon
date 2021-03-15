@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rails_heroicon (1.0.0)
-      rails (~> 5.0)
+      rails
 
 GEM
   remote: https://rubygems.org/
