@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Downgrade required `rails` version
+- Improve docs
+
 ## 1.0.0
 
 - Compress svg icons for performance

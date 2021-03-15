@@ -24,5 +24,6 @@ By participating in this project, you agree to abide by its rules.
 - Add solid icon(s) in `./icons/solid/` directory and outline icon(s) in
   `./icons/outline/` directory
 - After adding the icon(s), run `./bin/compress`
+  (you may need to run `sudo chmod 755 ./bin/compress`)
 - Submit a pull request adhering to the above mentioned guidelines
 - That's it. You have made a significant contribution

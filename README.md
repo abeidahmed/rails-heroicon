@@ -18,19 +18,20 @@ gem "rails_heroicon"
 
 And then execute:
 
-    $ bundle install
+```bash
+bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install rails_heroicon
+```bash
+gem install rails_heroicon
+```
 
 ## Usage
 
-After installing the gem, using it is as simple as
-
-```erb
-<%= heroicon "user" %>
-```
+After installing the gem, call `<%= heroicon "user" %>` on your `erb` template.
+The first argument is the icon name. All the icons are listed [here](https://heroicons.com/).
 
 This will generate the following html:
 
@@ -41,6 +42,7 @@ This will generate the following html:
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
+  version="1.1"
 >
   <path
     d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
@@ -64,17 +66,12 @@ the default.
 
 To change the variant `<%= heroicon "user", variant: "solid" %>`.
 
-### Accessibility
-
-`rails_heroicon` automatically sets `aria-hidden="true"` if `aria-label` is not
-set, and if `aria-label` is set, then `role="img"` is set.
-
 ### HTML attributes
 
-Any `html` attribute is supported, for eg:
+Any `html` and `eruby` attribute is supported, for eg:
 
 ```erb
-<%= heroicon "user", class: "text-gray-500", data: { controller: "icon" } %>
+<%= heroicon "user", class: "text-gray-500", aria: { label: "user-icon" } %>
 ```
 
 ### Handling the size of the icon
@@ -90,6 +87,11 @@ need to set the `size` attribute on the helper method.
 If the `variant` is set as `outline`, `size` automatically defaults to `24`,
 and if the `variant` is set as `solid`, `size` automatically defaults to `20`.
 However, this can be over-written with the `size` attribute.
+
+### Accessibility
+
+`rails_heroicon` automatically sets `aria-hidden="true"` if `aria-label` is not
+set, and if `aria-label` is set, then `role="img"` is set.
 
 ## Development
 
