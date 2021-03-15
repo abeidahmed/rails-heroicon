@@ -1,6 +1,6 @@
 # Rails Heroicon ![ci](https://github.com/abeidahmed/rails-heroicon/actions/workflows/ci.yml/badge.svg)
 
-Ruby on Rails `view helpers` for the awesome heroicons by Steve Schoger. To view
+Ruby on Rails views helper for the awesome heroicons by Steve Schoger. To view
 all the icons visit [heroicons](https://heroicons.com/).
 
 All icons are included upto heroicons v0.4.2
