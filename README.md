@@ -117,3 +117,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 Everyone interacting in the Rails Heroicon project's codebases, issue trackers,
 chat rooms and mailing lists is expected to follow the
 [code of conduct](https://github.com/abeidahmed/rails-heroicon/blob/main/CODE_OF_CONDUCT.md).
+
+## Similar projects
+
+- [rails_feather](https://github.com/abeidahmed/rails_feather) - Ruby on Rails
+  views helper method for rendering beautiful feather icons.
