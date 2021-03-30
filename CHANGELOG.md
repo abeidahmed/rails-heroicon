@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Fix icon fill and stroke attribute
+- Replace solid `arrows-expand` icon
+
 ## 1.0.1
 
 - Downgrade required `rails` version
