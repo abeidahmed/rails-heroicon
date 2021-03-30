@@ -23,8 +23,8 @@ module Compress
         file = File.read(file_path)
 
         doc = Nokogiri::HTML::DocumentFragment.parse(file)
-        doc.css("path").remove_attr("stroke")
-        doc.css("path").remove_attr("fill")
+        doc.css("path").remove_attr("stroke") if variant == "outline"
+        doc.css("path").remove_attr("fill") if variant == "solid"
 
         svg_file.write doc.at_css("svg").inner_html.gsub("\n", "")
       end

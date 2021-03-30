@@ -68,16 +68,32 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       expect(icon.options.key?("size")).to be_falsy
     end
 
-    it "does not have the stroke attribute" do
-      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
+    context "when being an outline variant" do
+      it "does not have the stroke attribute" do
+        icon = RailsHeroicon::RailsHeroicon.new("user", variant: "outline")
 
-      expect(icon.svg_path).not_to match(/stroke=/)
+        expect(icon.svg_path).not_to match(/stroke=/)
+      end
+
+      it "has the fill attribute" do
+        icon = RailsHeroicon::RailsHeroicon.new("truck", variant: "outline")
+
+        expect(icon.svg_path).to match(/fill=/)
+      end
     end
 
-    it "does not have the fill attribute" do
-      icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
+    context "when being a solid variant" do
+      it "does not have the fill attribute" do
+        icon = RailsHeroicon::RailsHeroicon.new("user", variant: "solid")
 
-      expect(icon.svg_path).not_to match(/fill=/)
+        expect(icon.svg_path).not_to match(/fill=/)
+      end
+
+      it "has the stroke attribute" do
+        icon = RailsHeroicon::RailsHeroicon.new("folder-add", variant: "solid")
+
+        expect(icon.svg_path).to match(/stroke=/)
+      end
     end
   end
 
