@@ -1,3 +1,8 @@
+class Helper
+  include ActionView::Helpers::TagHelper
+  include RailsHeroicon::Helper
+end
+
 RSpec.describe RailsHeroicon::RailsHeroicon do
   describe "#initialize" do
     it "sets the icon name" do
@@ -174,6 +179,24 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       expect(icon.options[:height]).to eq(24)
       expect(icon.options[:width]).to eq(24)
+    end
+  end
+
+  describe "title" do
+    let(:icon_html) { Helper.new.heroicon("user", title: title) }
+
+    context "when no title is specified" do
+      let(:title) { nil }
+      it "does not render the title tag" do
+        expect(icon_html).not_to include("<title>")
+      end
+    end
+
+    context "when a title is specified" do
+      let(:title) { "My Title" }
+      it "renders the title tag" do
+        expect(icon_html).to include("<title>My Title</title><path")
+      end
     end
   end
 end
