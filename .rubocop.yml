@@ -1,3 +1,6 @@
+require:
+  - rubocop-rspec
+
 AllCops:
   Exclude:
     - './Gemfile.lock'
@@ -161,3 +164,38 @@ Style/TrailingCommaInBlockArgs:
 
 Style/RegexpLiteral:
   Enabled: false
+
+# RSpec cops from rubocop-rspec
+# https://github.com/rubocop-hq/rubocop-rspec/blob/master/config/default.yml
+RSpec/DescribeClass:
+  Enabled: true
+  StyleGuide: 'https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribeClass'
+  Exclude:
+    - 'spec/requests/**/*'
+    - 'spec/system/**/*'
+    - 'spec/tasks/**/*'
+
+RSpec/DescribedClassModuleWrapping:
+  Enabled: true
+  StyleGuide: 'https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribedClassModuleWrapping'
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 15
+  StyleGuide: 'https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExampleLength'
+
+RSpec/PredicateMatcher:
+  Enabled: false
+
+RSpec/MessageExpectation:
+  Enabled: true
+  EnforcedStyle: allow
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+  StyleGuide: 'https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleMemoizedHelpers'
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 8
+  StyleGuide: 'https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleExpectations'
