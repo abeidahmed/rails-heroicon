@@ -7,5 +7,6 @@ group :development, :test do
   gem "nokogiri", "~> 1.11.1"
   gem "rake", "~> 13.0"
   gem "rubocop", "~> 1.7"
+  gem "rubocop-rspec", "~> 2.3"
   gem "rspec", "~> 3.0"
 end
