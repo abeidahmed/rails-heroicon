@@ -32,9 +32,11 @@ module RailsHeroicon
     # == Accessibility
     # The helper method automatically sets <tt>aria-hidden=true</tt> if <tt>aria-label</tt> is not set, and
     # if <tt>aria-label</tt> is set, then <tt>role=img</tt> is set automatically.
-    def heroicon(symbol, **options)
+    def heroicon(symbol, title: nil, **options)
       icon = RailsHeroicon.new(symbol, **options)
-      content_tag(:svg, icon.svg_path.html_safe, icon.options)
+
+      title_tag = content_tag(:title, title) if title
+      content_tag(:svg, title_tag.to_s.html_safe + icon.svg_path.html_safe, icon.options)
     end
   end
 end
