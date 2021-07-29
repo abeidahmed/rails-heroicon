@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_heroicon (1.0.2)
+    rails_heroicon (1.0.3)
       rails
 
 GEM
@@ -73,8 +73,8 @@ GEM
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (0.5.1)
+      activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     loofah (2.10.0)
