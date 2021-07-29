@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- You can now render `<title>` tag by passing in the `title` attribute on the
+helper method - *@efatsi*
+
 ## 1.0.2
 
 - Fix icon fill and stroke attribute
