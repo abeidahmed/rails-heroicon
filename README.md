@@ -93,6 +93,10 @@ However, this can be over-written with the `size` attribute.
 `rails_heroicon` automatically sets `aria-hidden="true"` if `aria-label` is not
 set, and if `aria-label` is set, then `role="img"` is set.
 
+### Tooltip
+
+You can provide tooltips on hover if you pass in a `:title` option. Anything passed into the `:title` option will be rendered inside of a <title> tag within the rendered SVG, which modern browsers will lean on to display a tooltip on hover.
+
 ## Development
 
 - Clone the repo

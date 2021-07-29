@@ -32,9 +32,6 @@ module RailsHeroicon
     # == Accessibility
     # The helper method automatically sets <tt>aria-hidden=true</tt> if <tt>aria-label</tt> is not set, and
     # if <tt>aria-label</tt> is set, then <tt>role=img</tt> is set automatically.
-    #
-    # You can provide tooltips on hover if you pass in a `:title` option. Anything passed into the `:title` option
-    # will be rendered inside of a <title> tag within the rendered SVG.
     def heroicon(symbol, title: nil, **options)
       icon = RailsHeroicon.new(symbol, **options)
 
