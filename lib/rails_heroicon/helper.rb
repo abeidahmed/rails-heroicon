@@ -33,21 +33,13 @@ module RailsHeroicon
     # The helper method automatically sets <tt>aria-hidden=true</tt> if <tt>aria-label</tt> is not set, and
     # if <tt>aria-label</tt> is set, then <tt>role=img</tt> is set automatically.
     #
-    # You can provide tooltips on hover if you pass in an `:alt` option. Anything passed into the `:alt` option
+    # You can provide tooltips on hover if you pass in a `:title` option. Anything passed into the `:title` option
     # will be rendered inside of a <title> tag within the rendered SVG.
-    def heroicon(symbol, **options)
+    def heroicon(symbol, title: nil, **options)
       icon = RailsHeroicon.new(symbol, **options)
 
-      if alt = options.delete(:alt)
-        content_tag(:svg, icon.options) do
-          [
-            content_tag(:title, alt),
-            icon.svg_path
-          ].join.html_safe
-        end
-      else
-        content_tag(:svg, icon.svg_path.html_safe, icon.options)
-      end
+      title_tag = content_tag(:title, title) if title
+      content_tag(:svg, title_tag.to_s.html_safe + icon.svg_path.html_safe, icon.options)
     end
   end
 end
