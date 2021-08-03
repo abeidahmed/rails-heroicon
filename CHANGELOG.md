@@ -2,6 +2,7 @@
 
 ## 1.0.3
 
+- Add small `arrow` icons
 - Add correct `plus` icon
 - You can now render `<title>` tag by passing in the `title` attribute on the
 helper method - *@efatsi*
