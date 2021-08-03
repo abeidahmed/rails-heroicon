@@ -3,7 +3,7 @@
 Ruby on Rails views helper for the awesome heroicons by Steve Schoger. To see
 all the icons visit [heroicons](https://heroicons.com/).
 
-All icons are included upto heroicons v0.4.2
+230 icons included as of today.
 
 > This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
 > yet.
@@ -95,7 +95,10 @@ set, and if `aria-label` is set, then `role="img"` is set.
 
 ### Tooltip
 
-You can provide tooltips on hover if you pass in a `:title` option. Anything passed into the `:title` option will be rendered inside of a <title> tag within the rendered SVG, which modern browsers will lean on to display a tooltip on hover.
+You can provide tooltips on hover if you pass in a `title` option. Anything
+passed into the `title` option will be rendered inside of a
+`<title>` tag within the rendered SVG, which modern browsers will lean on to
+display a tooltip on hover.
 
 ## Development
 
