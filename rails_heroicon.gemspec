@@ -11,9 +11,10 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.6")
 
-  spec.metadata["homepage_uri"]    = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/abeidahmed/rails-heroicon"
-  spec.metadata["changelog_uri"]   = "https://github.com/abeidahmed/rails-heroicon/blob/main/CHANGELOG.md"
+  spec.metadata["homepage_uri"]          = spec.homepage
+  spec.metadata["source_code_uri"]       = "https://github.com/abeidahmed/rails-heroicon"
+  spec.metadata["changelog_uri"]         = "https://github.com/abeidahmed/rails-heroicon/blob/main/CHANGELOG.md"
+  spec.metadata["rubygems_mfa_required"] = true
 
   spec.files         = Dir["lib/**/*", "compressed/**/*", "LICENSE.txt", "README.md"]
   spec.require_paths = ["lib"]
