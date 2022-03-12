@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.4
+
+- Store compressed icons in a `JSON` file
+- Bump nokogiri
+- Bump rubocop
+- Bump rubocop-rspec
+- Updated bundler:2.2.33
+- Require MFA for publishing the gem
+
 ## 1.0.3
 
 - Add small `arrow` icons
