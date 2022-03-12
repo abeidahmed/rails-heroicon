@@ -2,33 +2,33 @@
 
 require "nokogiri"
 require "fileutils"
+require "json"
 
 module Compress
   # Removes the wrapper svg element, the path elements stroke and fill attribute, new lines ('\n'),
   # and stores in the compressed directory.
-  COMPRESSED = "compressed".freeze
+  DIRECTORY = "compressed".freeze
+  FILE_NAME = "icons.json".freeze
 
   def self.start!
-    Dir[File.join(File.dirname(__FILE__), "..", "icons", "**", "*.svg")].each do |file_path|
+    icons = Dir[File.join(File.dirname(__FILE__), "..", "icons", "**", "*.svg")]
+
+    Dir.mkdir(DIRECTORY) unless Dir.exist?(DIRECTORY)
+    FileUtils.rm_rf(Dir.glob("#{DIRECTORY}/*"))
+
+    icon_hash = icons.each_with_object(Hash.new { |h, k| h[k] = h.dup.clear }) do |file_path, hash|
       variant, file_name = file_path.split("/").last(2)
 
-      Dir.mkdir(COMPRESSED) unless Dir.exist?(COMPRESSED)
-      Dir.mkdir("#{COMPRESSED}/#{variant}") unless Dir.exist?("#{COMPRESSED}/#{variant}")
+      file_content = File.read(file_path)
+      doc = Nokogiri::HTML::DocumentFragment.parse(file_content)
+      doc.css("path").remove_attr("stroke") if variant == "outline"
+      doc.css("path").remove_attr("fill") if variant == "solid"
 
-      compressed_icon_path = "#{COMPRESSED}/#{variant}/#{file_name}"
-      FileUtils.touch(compressed_icon_path) unless File.exist?(compressed_icon_path)
-
-      File.open(compressed_icon_path, "w") do |svg_file|
-        file_path = File.join(File.dirname(__FILE__), "..", "icons", variant, file_name)
-        file = File.read(file_path)
-
-        doc = Nokogiri::HTML::DocumentFragment.parse(file)
-        doc.css("path").remove_attr("stroke") if variant == "outline"
-        doc.css("path").remove_attr("fill") if variant == "solid"
-
-        svg_file.write doc.at_css("svg").inner_html.gsub("\n", "")
-      end
+      icon_name = File.basename(file_name, ".svg")
+      hash[variant][icon_name] = doc.at_css("svg").inner_html.gsub("\n", "")
     end
+
+    File.write("#{DIRECTORY}/#{FILE_NAME}", JSON.pretty_generate(icon_hash))
 
     puts "Finished compressing icons."
   end
