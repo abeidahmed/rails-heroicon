@@ -9,29 +9,44 @@ on:
       - main
 
 jobs:
-  ci:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.3
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: gems-build-heroicon-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
+      - name: Install dependencies
+        run: |
+          gem update --system
+          gem install bundler:2.2.33
+          bundle install --jobs 4 --retry 3
+      - name: Lint
+        run: bundle exec rubocop --parallel
+
+  test:
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [2.6, 2.7, 3.0]
+        ruby_version: [2.6, 2.7, 3.0]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - uses: actions/checkout@master
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-
-      - name: Install Dependencies
+          ruby-version: ${{ matrix.ruby_version }}
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: gems-build-heroicon-main-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
+      - name: Install dependencies
         run: |
           gem update --system
-          gem install bundler
+          gem install bundler:2.2.33
           bundle install --jobs 4 --retry 3
-
-      - name: Tests
+      - name: Run tests
         run: bundle exec rake
-
-      - name: Linters
-        run: bundle exec rubocop --parallel

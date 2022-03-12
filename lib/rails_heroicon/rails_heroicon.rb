@@ -27,15 +27,10 @@ module RailsHeroicon
 
     # Finds the svg icon with respect to variant.
     def svg_path
-      file_path = if solid?
-                    "#{SOLID_ICON_PATH}/#{@icon}.svg"
-                  else
-                    "#{OUTLINE_ICON_PATH}/#{@icon}.svg"
-                  end
+      icon = ICONS.dig(@variant, @icon)
+      raise UndefinedIcon, @icon unless icon
 
-      raise UndefinedIcon, @icon unless File.exist?(file_path)
-
-      File.read(file_path)
+      icon
     end
 
     private
