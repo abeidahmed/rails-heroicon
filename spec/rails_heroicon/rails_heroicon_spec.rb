@@ -27,7 +27,7 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "raises if variant is undefined" do
       expect do
         described_class.new("user", variant: "unknown")
-      end.to raise_error(RailsHeroicon::UndefinedVariant, "Variant should be one of outline, solid")
+      end.to raise_error(RailsHeroicon::UndefinedVariant, "Variant should be one of outline, solid, mini")
     end
   end
 
@@ -74,12 +74,6 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
         expect(icon.svg_path).not_to match(/stroke=/)
       end
-
-      it "has the fill attribute" do
-        icon = described_class.new("truck", variant: "outline")
-
-        expect(icon.svg_path).to match(/fill=/)
-      end
     end
 
     context "when being a solid variant" do
@@ -88,11 +82,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
         expect(icon.svg_path).not_to match(/fill=/)
       end
+    end
 
-      it "has the stroke attribute" do
-        icon = described_class.new("folder-add", variant: "solid")
+    context "when being a mini variant" do
+      it "does not have the fill attribute" do
+        icon = described_class.new("user", variant: "mini")
 
-        expect(icon.svg_path).to match(/stroke=/)
+        expect(icon.svg_path).not_to match(/fill=/)
       end
     end
   end
@@ -107,6 +103,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
     it "sets the stroke to none and fill as currentColor if variant is solid" do
       icon = described_class.new("user", variant: "solid")
+
+      expect(icon.options[:stroke]).to eq("none")
+      expect(icon.options[:fill]).to eq("currentColor")
+    end
+
+    it "sets the stroke to none and fill as currentColor if variant is mini" do
+      icon = described_class.new("user", variant: "mini")
 
       expect(icon.options[:stroke]).to eq("none")
       expect(icon.options[:fill]).to eq("currentColor")
@@ -140,40 +143,92 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       expect(icon.options[:viewBox]).to eq("0 0 24 24")
     end
 
-    it "sets the viewBox to 20 if variant is solid" do
+    it "sets the viewBox to 24 if variant is solid" do
       icon = described_class.new("user", variant: "solid")
+
+      expect(icon.options[:viewBox]).to eq("0 0 24 24")
+    end
+
+    it "sets the viewBox to 20 if variant is mini" do
+      icon = described_class.new("user", variant: "mini")
 
       expect(icon.options[:viewBox]).to eq("0 0 20 20")
     end
   end
 
   describe "sizes" do
-    it "size defaults to 24 if variant is outline" do
-      icon = described_class.new("user", variant: "outline")
+    context "when variant is outline" do
+      it "size defaults to 24 if variant is outline" do
+        icon = described_class.new("user", variant: "outline")
 
-      expect(icon.options[:height]).to eq(24)
-      expect(icon.options[:width]).to eq(24)
+        expect(icon.options[:height]).to eq(24)
+        expect(icon.options[:width]).to eq(24)
+      end
+
+      it "size does not default to 24 if user has explicitly stated" do
+        icon = described_class.new("user", variant: "outline", size: 32)
+
+        expect(icon.options[:height]).to eq(32)
+        expect(icon.options[:width]).to eq(32)
+      end
     end
 
-    it "size does not default to 24 if user has explicitly stated" do
-      icon = described_class.new("user", variant: "outline", size: 20)
+    context "when variant is solid" do
+      it "size defaults to 24 if variant is solid" do
+        icon = described_class.new("user", variant: "solid")
 
-      expect(icon.options[:height]).to eq(20)
-      expect(icon.options[:width]).to eq(20)
+        expect(icon.options[:height]).to eq(24)
+        expect(icon.options[:width]).to eq(24)
+      end
+
+      it "size does not default to 24 if user has explicitly stated" do
+        icon = described_class.new("user", variant: "solid", size: 32)
+
+        expect(icon.options[:height]).to eq(32)
+        expect(icon.options[:width]).to eq(32)
+      end
     end
 
-    it "size defaults to 20 if variant is solid" do
-      icon = described_class.new("user", variant: "solid")
+    context "when variant is mini" do
+      it "size defaults to 20 if variant is mini" do
+        icon = described_class.new("user", variant: "mini")
 
-      expect(icon.options[:height]).to eq(20)
-      expect(icon.options[:width]).to eq(20)
+        expect(icon.options[:height]).to eq(20)
+        expect(icon.options[:width]).to eq(20)
+      end
+
+      it "size does not default to 20 if user has explicitly stated" do
+        icon = described_class.new("user", variant: "mini", size: 32)
+
+        expect(icon.options[:height]).to eq(32)
+        expect(icon.options[:width]).to eq(32)
+      end
+    end
+  end
+
+  describe "stroke-width" do
+    context "when variant is outline" do
+      it "sets it to 1.5" do
+        icon = described_class.new("user", variant: "outline")
+
+        expect(icon.options[:"stroke-width"]).to eq("1.5")
+      end
     end
 
-    it "size does not default to 20 if user has explicitly stated" do
-      icon = described_class.new("user", variant: "solid", size: 24)
+    context "when variant is solid" do
+      it "does not set the stroke width" do
+        icon = described_class.new("user", variant: "solid")
 
-      expect(icon.options[:height]).to eq(24)
-      expect(icon.options[:width]).to eq(24)
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+    end
+
+    context "when variant is mini" do
+      it "does not set the stroke width" do
+        icon = described_class.new("user", variant: "mini")
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
     end
   end
 end
