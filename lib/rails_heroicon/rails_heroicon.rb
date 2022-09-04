@@ -2,7 +2,7 @@ require_relative "errors"
 
 module RailsHeroicon
   class RailsHeroicon
-    VARIANTS = %w[outline solid].freeze
+    VARIANTS = %w[outline solid mini].freeze
 
     attr_reader :options
 
@@ -15,14 +15,7 @@ module RailsHeroicon
       @size = icon_size_with(size)
 
       @options.merge!(a11y)
-      @options.merge!({
-        viewBox: outline? ? "0 0 24 24" : "0 0 20 20",
-        height: @size,
-        width: @size,
-        version: "1.1",
-        fill: outline? ? "none" : "currentColor",
-        stroke: solid? ? "none" : "currentColor"
-      })
+      @options.merge!(viewBox: viewbox, height: @size, width: @size, version: "1.1", fill: fill, stroke: stroke)
     end
 
     # Finds the svg icon with respect to variant.
@@ -47,16 +40,31 @@ module RailsHeroicon
       accessible
     end
 
+    def viewbox
+      return "0 0 20 20" if mini?
+
+      "0 0 24 24"
+    end
+
+    def fill
+      return "none" if outline?
+
+      "currentColor"
+    end
+
+    def stroke
+      return "currentColor" if outline?
+
+      "none"
+    end
+
     # If the user has explicitly stated the size attribute, then use that. If size attribute is not passed
-    # then default to 24 if variant is outline, else default to 20 if variant is solid.
+    # then default to 24 if variant is outline or solid, else default to 20 if variant is mini.
     def icon_size_with(size)
-      if outline? && size.nil?
-        24
-      elsif solid? && size.nil?
-        20
-      else
-        size
-      end
+      return size if size
+      return 20 if mini?
+
+      24
     end
 
     def outline?
@@ -65,6 +73,10 @@ module RailsHeroicon
 
     def solid?
       @variant == "solid"
+    end
+
+    def mini?
+      @variant == "mini"
     end
   end
 end

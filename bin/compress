@@ -22,10 +22,10 @@ module Compress
       file_content = File.read(file_path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file_content)
       doc.css("path").remove_attr("stroke") if variant == "outline"
-      doc.css("path").remove_attr("fill") if variant == "solid"
+      doc.css("path").remove_attr("fill") if %w[solid mini].include?(variant)
 
       icon_name = File.basename(file_name, ".svg")
-      hash[variant][icon_name] = doc.at_css("svg").inner_html.gsub("\n", "")
+      hash[variant][icon_name] = doc.at_css("svg").inner_html.gsub(/^[\s\t]*|[\s\t]*\n/, "").strip
     end
 
     File.write("#{DIRECTORY}/#{FILE_NAME}", JSON.pretty_generate(icon_hash))
