@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["lib/**/*", "compressed/**/*", "LICENSE.txt", "README.md"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "railties"
   spec.add_dependency "actionview"
+  spec.add_dependency "railties"
 end
