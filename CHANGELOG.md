@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Add `mini` variant
+- Update all icons to use v2.0.0 heroicons
+
 ## 1.0.4
 
 - Store compressed icons in a `JSON` file

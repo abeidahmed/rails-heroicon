@@ -3,7 +3,7 @@
 Ruby on Rails views helper for the awesome heroicons by Steve Schoger. To see
 all the icons visit [heroicons](https://heroicons.com/).
 
-230 icons included as of today.
+280 icons included as of today.
 
 > This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
 > yet.
@@ -37,11 +37,13 @@ This will generate the following html:
 
 ```html
 <svg
+  aria-hidden="true"
   width="24"
   height="24"
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
+  stroke-width="1.5"
   version="1.1"
 >
   <path
@@ -59,9 +61,11 @@ This will generate the following html:
 </svg>
 ```
 
+> Note: Indentation is for readibility purpose.
+
 ### Variant
 
-`rails_heroicon` provides 2 variants, `outline` and `solid`, `outline` being
+`rails_heroicon` provides 3 variants, `outline`, `solid`, and `mini`, `outline` being
 the default.
 
 To change the variant `<%= heroicon "user", variant: "solid" %>`.
@@ -84,8 +88,8 @@ need to set the `size` attribute on the helper method.
 <%= heroicon "user", size: 20 %>
 ```
 
-If the `variant` is set as `outline`, `size` automatically defaults to `24`,
-and if the `variant` is set as `solid`, `size` automatically defaults to `20`.
+If the `variant` is set as `outline` or `solid`, `size` automatically defaults to `24`,
+and if the `variant` is set as `mini`, `size` automatically defaults to `20`.
 However, this can be over-written with the `size` attribute.
 
 ### Accessibility
