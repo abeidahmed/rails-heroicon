@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_heroicon (1.0.4)
+    rails_heroicon (2.0.0)
       actionview
       railties
 
@@ -83,7 +83,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.11.0)
     rspec-support (3.11.0)
-    rubocop (1.36.0)
+    rubocop (1.35.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.1.2.1)
@@ -95,9 +95,13 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.21.0)
       parser (>= 3.1.1.0)
-    rubocop-rspec (2.12.1)
-      rubocop (~> 1.31)
+    rubocop-performance (1.14.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
+    standard (1.16.1)
+      rubocop (= 1.35.1)
+      rubocop-performance (= 1.14.3)
     thor (1.2.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
@@ -114,8 +118,7 @@ DEPENDENCIES
   rails_heroicon!
   rake (~> 13.0)
   rspec (~> 3.11)
-  rubocop (~> 1.36)
-  rubocop-rspec (~> 2.12, >= 2.12.1)
+  standard (~> 1.16, >= 1.16.1)
 
 BUNDLED WITH
    2.2.33
