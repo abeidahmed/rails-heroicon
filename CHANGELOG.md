@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- Fix argument error
+
 ## 2.0.1
 
 - Update `required_ruby_version` to 2.7
