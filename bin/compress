@@ -13,7 +13,7 @@ module Compress
   def self.start!
     icons = Dir[File.join(File.dirname(__FILE__), "../icons/**/*.svg")]
 
-    Dir.mkdir(DIRECTORY) unless Dir.exist?(DIRECTORY)
+    FileUtils.mkdir_p(DIRECTORY)
     FileUtils.rm_rf(Dir.glob("#{DIRECTORY}/*"))
 
     icon_hash = icons.each_with_object(Hash.new { |h, k| h[k] = h.dup.clear }) do |file_path, hash|
