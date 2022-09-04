@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.0.0
 
 - Add `mini` variant
 - Update all icons to use v2.0.0 heroicons
