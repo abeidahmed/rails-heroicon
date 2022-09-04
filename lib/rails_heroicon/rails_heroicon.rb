@@ -15,7 +15,7 @@ module RailsHeroicon
       @size = icon_size_with(size)
 
       @options.merge!(a11y)
-      @options.merge!(viewBox: viewbox, height: @size, width: @size, version: "1.1", fill: fill, stroke: stroke)
+      @options.merge!(misc)
     end
 
     # Finds the svg icon with respect to variant.
@@ -40,22 +40,18 @@ module RailsHeroicon
       accessible
     end
 
-    def viewbox
-      return "0 0 20 20" if mini?
+    def misc
+      hash = {}
 
-      "0 0 24 24"
-    end
+      hash[:viewBox] = mini? ? "0 0 20 20" : "0 0 24 24"
+      hash[:height] = @size
+      hash[:width] = @size
+      hash[:version] = "1.1"
+      hash[:fill] = outline? ? "none" : "currentColor"
+      hash[:stroke] = outline? ? "currentColor" : "none"
+      hash[:"stroke-width"] = "1.5" if outline?
 
-    def fill
-      return "none" if outline?
-
-      "currentColor"
-    end
-
-    def stroke
-      return "currentColor" if outline?
-
-      "none"
+      hash
     end
 
     # If the user has explicitly stated the size attribute, then use that. If size attribute is not passed

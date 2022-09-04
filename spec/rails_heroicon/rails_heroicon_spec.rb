@@ -205,4 +205,30 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       end
     end
   end
+
+  describe "stroke-width" do
+    context "when variant is outline" do
+      it "sets it to 1.5" do
+        icon = described_class.new("user", variant: "outline")
+
+        expect(icon.options[:"stroke-width"]).to eq("1.5")
+      end
+    end
+
+    context "when variant is solid" do
+      it "does not set the stroke width" do
+        icon = described_class.new("user", variant: "solid")
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+    end
+
+    context "when variant is mini" do
+      it "does not set the stroke width" do
+        icon = described_class.new("user", variant: "mini")
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+    end
+  end
 end
