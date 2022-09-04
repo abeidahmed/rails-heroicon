@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Update `required_ruby_version` to 2.7
+
 ## 2.0.0
 
 - Add `mini` variant

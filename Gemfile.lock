@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_heroicon (2.0.0)
+    rails_heroicon (2.0.1)
       actionview
       railties
 
