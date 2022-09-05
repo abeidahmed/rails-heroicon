@@ -2,6 +2,7 @@ require "action_view"
 
 module RailsHeroicon
   module Helper
+    include ActionView::Helpers::TagHelper
     # To add a heroicon, call <tt><%= heroicon "icon_name" %></tt> on your erb template.
     # Head over to https://heroicons.com to view all the icons.
     #
