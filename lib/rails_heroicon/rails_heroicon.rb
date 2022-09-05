@@ -11,7 +11,7 @@ module RailsHeroicon
 
       @icon = icon.to_s
       @variant = variant.to_s
-      @options = options
+      @options = options.dup
       @size = icon_size_with(size)
       @options.merge!(svg_properties)
     end
