@@ -9,7 +9,7 @@ module RailsHeroicon
     # The helper method accepts mutiple arguments such as:
     #
     # === Variant
-    # There are two types of variants: 'outline' and 'solid', the default being the 'outline'.
+    # There are three types of variants: 'outline', 'solid' and 'mini', the default being the 'outline'.
     # To specify the solid variant, call <tt><%= heroicon "icon_name", variant: "solid" %></tt>
     #
     # === HTML attributes
@@ -25,9 +25,9 @@ module RailsHeroicon
     #
     # This will set the <tt>height</tt> and <tt>width</tt> attribute on the svg.
     #
-    # If the variant is set as <tt>outline</tt>, size automatically defaults to 24, and if the variant is set as
-    # <tt>solid</tt>, size automatically defaults to 20. However, this can be over-written with the <tt>size</tt>
-    # attribute.
+    # If the variant is set as <tt>outline</tt> or <tt>solid</tt>, size automatically defaults to 24,
+    # and if the variant is set as <tt>mini</tt>, size automatically defaults to 20.
+    # However, this can be over-written with the <tt>size</tt> attribute.
     #
     # == Accessibility
     # The helper method automatically sets <tt>aria-hidden=true</tt> if <tt>aria-label</tt> is not set, and
