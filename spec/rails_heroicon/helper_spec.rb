@@ -2,7 +2,6 @@ RSpec.describe RailsHeroicon::Helper do
   before do
     helper = Class.new do
       include RailsHeroicon::Helper
-      include ActionView::Helpers::TagHelper
     end
 
     stub_const("Heroicon", helper)

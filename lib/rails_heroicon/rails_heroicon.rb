@@ -11,11 +11,9 @@ module RailsHeroicon
 
       @icon = icon.to_s
       @variant = variant.to_s
-      @options = options
+      @options = options.dup
       @size = icon_size_with(size)
-
-      @options.merge!(a11y)
-      @options.merge!(misc)
+      @options.merge!(svg_properties)
     end
 
     # Finds the svg icon with respect to variant.
@@ -28,30 +26,24 @@ module RailsHeroicon
 
     private
 
-    def a11y
-      accessible = {}
+    def svg_properties
+      properties = {}
 
-      if @options[:"aria-label"].nil? && @options["aria-label"].nil? && @options.dig(:aria, :label).nil?
-        accessible[:"aria-hidden"] = "true"
+      properties[:viewBox] = mini? ? "0 0 20 20" : "0 0 24 24"
+      properties[:height] = @size
+      properties[:width] = @size
+      properties[:version] = "1.1"
+      properties[:fill] = outline? ? "none" : "currentColor"
+      properties[:stroke] = outline? ? "currentColor" : "none"
+      properties[:"stroke-width"] = "1.5" if outline?
+
+      if options[:"aria-label"].nil? && options["aria-label"].nil? && options.dig(:aria, :label).nil?
+        properties[:"aria-hidden"] = "true"
       else
-        accessible[:role] = "img"
+        properties[:role] = "img"
       end
 
-      accessible
-    end
-
-    def misc
-      hash = {}
-
-      hash[:viewBox] = mini? ? "0 0 20 20" : "0 0 24 24"
-      hash[:height] = @size
-      hash[:width] = @size
-      hash[:version] = "1.1"
-      hash[:fill] = outline? ? "none" : "currentColor"
-      hash[:stroke] = outline? ? "currentColor" : "none"
-      hash[:"stroke-width"] = "1.5" if outline?
-
-      hash
+      properties
     end
 
     # If the user has explicitly stated the size attribute, then use that. If size attribute is not passed
