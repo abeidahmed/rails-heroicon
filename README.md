@@ -3,7 +3,7 @@
 Ruby on Rails views helper for the awesome heroicons by Steve Schoger. To see
 all the icons visit [heroicons](https://heroicons.com/).
 
-280 icons included as of today.
+292 icons included as of today.
 
 > This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
 > yet.
