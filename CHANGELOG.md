@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.1.1
 
 - Fix mini `information-circle` icon alignment
 - Fix mini `minus` icon alignment
