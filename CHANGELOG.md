@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Fix mini `information-circle` alignment
+
 ## 2.1.0
 
 - Add new icons (`bug-ant`, `eye-dropper`, `pause-circle`, `play-circle`, `power`, `rocket-launch`, `square-2-stack-3d`, `stop-circle`, `trophy`, `tv`, `viewfinder-circle`, `window`)
@@ -31,7 +35,7 @@
 - Add small `arrow` icons
 - Add correct `plus` icon
 - You can now render `<title>` tag by passing in the `title` attribute on the
-helper method - *@efatsi*
+  helper method - *@efatsi*
 
 ## 1.0.2
 
