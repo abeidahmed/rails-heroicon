@@ -1,0 +1,4 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+
+# Mark the icons as having been generated.
+compressed/icons.json linguist-generated
