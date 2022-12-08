@@ -11,6 +11,7 @@ module Compress
   FILE_NAME = "icons.json".freeze
 
   def self.start!
+    icons_count = Hash.new(0)
     icons = Dir[File.join(File.dirname(__FILE__), "../icons/**/*.svg")]
 
     FileUtils.mkdir_p(DIRECTORY)
@@ -26,11 +27,12 @@ module Compress
 
       icon_name = File.basename(file_name, ".svg")
       hash[variant][icon_name] = doc.at_css("svg").inner_html.gsub(/^[\s\t]*|[\s\t]*\n/, "").strip
+      icons_count[variant.to_sym] += 1
     end
 
     File.write("#{DIRECTORY}/#{FILE_NAME}", JSON.pretty_generate(icon_hash))
 
-    puts "Finished compressing icons."
+    puts "Finished compressing #{icons_count[:outline]} outline, #{icons_count[:solid]} solid, and #{icons_count[:mini]} mini icons."
   end
 end
 
