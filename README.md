@@ -110,6 +110,11 @@ display a tooltip on hover.
 - Run `bundle install`, or run `./bin/setup`
 - Run `bundle exec rake` to run the tests to see if it passing
 
+## Publishing
+
+- `gem build rails_heroicon.gemspec`
+- `gem push rails_heroicon-x.x.x.gem`
+
 ## Contributing
 
 Bug reports and pull requests are welcome. This project is intended to be a
