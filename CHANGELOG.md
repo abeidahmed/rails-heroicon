@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Fix mini `information-circle` alignment
+- Fix mini `information-circle` icon alignment
+- Fix mini `minus` icon alignment
 
 ## 2.1.0
 
@@ -35,7 +36,7 @@
 - Add small `arrow` icons
 - Add correct `plus` icon
 - You can now render `<title>` tag by passing in the `title` attribute on the
-  helper method - *@efatsi*
+  helper method - _@efatsi_
 
 ## 1.0.2
 
