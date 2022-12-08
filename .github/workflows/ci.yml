@@ -12,11 +12,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.3
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: gems-build-heroicon-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
@@ -35,11 +35,11 @@ jobs:
       matrix:
         ruby_version: [2.7, 3.0]
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: gems-build-heroicon-main-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
