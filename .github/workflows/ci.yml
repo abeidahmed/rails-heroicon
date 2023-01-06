@@ -19,12 +19,11 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
-          key: gems-build-heroicon-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
+          key: gems-build-heroicon-v1-main-ruby-3.0.x-${{ hashFiles('**/Gemfile.lock') }}
       - name: Install dependencies
         run: |
-          gem update --system
           gem install bundler:2.2.33
-          bundle install --jobs 4 --retry 3
+          bundle install --jobs 4 --retry 3 --path=vendor/bundle
       - name: Lint
         run: bundle exec standardrb
 
@@ -33,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby_version: [2.7, 3.0]
+        ruby_version: [2.7, 3.0, 3.1]
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
@@ -42,11 +41,10 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
-          key: gems-build-heroicon-main-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
+          key: gems-build-heroicon-v1-main-ruby-${{ matrix.ruby_version }}-${{ hashFiles('**/Gemfile.lock') }}
       - name: Install dependencies
         run: |
-          gem update --system
           gem install bundler:2.2.33
-          bundle install --jobs 4 --retry 3
+          bundle install --jobs 4 --retry 3 --path=vendor/bundle
       - name: Run tests
         run: bundle exec rspec
