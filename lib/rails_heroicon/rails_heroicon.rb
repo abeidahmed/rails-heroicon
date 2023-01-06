@@ -29,6 +29,7 @@ module RailsHeroicon
     def svg_properties
       properties = {}
 
+      properties[:xmlns] = "http://www.w3.org/2000/svg"
       properties[:viewBox] = mini? ? "0 0 20 20" : "0 0 24 24"
       properties[:height] = @size
       properties[:width] = @size

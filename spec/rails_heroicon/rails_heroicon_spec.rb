@@ -59,13 +59,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "does not have the variant attribute" do
       icon = described_class.new("user", variant: "outline")
 
-      expect(icon.options.key?("variant")).to be_falsy
+      expect(icon.options.key?("variant")).to eq(false)
     end
 
     it "does not have the size attribute" do
       icon = described_class.new("user", size: 24)
 
-      expect(icon.options.key?("size")).to be_falsy
+      expect(icon.options.key?("size")).to eq(false)
     end
 
     context "when being an outline variant" do
@@ -126,13 +126,19 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "sets role to img if aria-label is passed" do
       icon = described_class.new("user", "aria-label": "icon")
 
-      expect(icon.options.key?("aria-hidden")).to be_falsy
+      expect(icon.options.key?("aria-hidden")).to eq(false)
       expect(icon.options[:role]).to eq("img")
 
       another_icon = described_class.new("user", aria: {label: "icon"})
 
-      expect(another_icon.options.key?("aria-hidden")).to be_falsy
+      expect(another_icon.options.key?("aria-hidden")).to eq(false)
       expect(another_icon.options[:role]).to eq("img")
+    end
+
+    it "sets xmlns attribute" do
+      icon = described_class.new("user")
+
+      expect(icon.options[:xmlns]).to eq("http://www.w3.org/2000/svg")
     end
   end
 
