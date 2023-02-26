@@ -62,7 +62,7 @@ This will generate the following html:
 </svg>
 ```
 
-> Note: Indentation is for readibility purpose.
+> Note: Indentation is for readability purpose.
 
 ### Variant
 
