@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## 2.1.2
 
 - Remove `stroke-width` from `svg` path if it is present
 - Make `stroke-width` customizable
