@@ -8,6 +8,7 @@
   ```erb
   <%= heroicon "user", variant: "outline", "stroke-width": 2 %>
   ```
+- Cache repeating icons using `mattr_cache`
 
 ## 2.1.1
 
