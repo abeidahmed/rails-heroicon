@@ -22,6 +22,9 @@ module Compress
 
       file_content = File.read(file_path)
       doc = Nokogiri::HTML::DocumentFragment.parse(file_content)
+      # heroicons removes the "stroke-width" from the compressed version.
+      # Issue: https://github.com/abeidahmed/rails-heroicon/issues/37
+      doc.css("path").remove_attr("stroke-width")
       doc.css("path").remove_attr("stroke") if variant == "outline"
       doc.css("path").remove_attr("fill") if %w[solid mini].include?(variant)
 
