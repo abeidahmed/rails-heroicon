@@ -36,7 +36,7 @@ module RailsHeroicon
       properties[:version] = "1.1"
       properties[:fill] = outline? ? "none" : "currentColor"
       properties[:stroke] = outline? ? "currentColor" : "none"
-      properties[:"stroke-width"] = "1.5" if outline?
+      properties[:"stroke-width"] = stroke_width
 
       if options[:"aria-label"].nil? && options["aria-label"].nil? && options.dig(:aria, :label).nil?
         properties[:"aria-hidden"] = "true"
@@ -54,6 +54,11 @@ module RailsHeroicon
       return 20 if mini?
 
       24
+    end
+
+    def stroke_width
+      return unless outline?
+      @options[:"stroke-width"] || 1.5
     end
 
     def outline?

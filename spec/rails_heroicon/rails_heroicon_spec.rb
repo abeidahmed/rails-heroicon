@@ -1,3 +1,5 @@
+require "byebug"
+
 RSpec.describe RailsHeroicon::RailsHeroicon do
   describe "#initialize" do
     it "sets the icon name" do
@@ -217,7 +219,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       it "sets it to 1.5" do
         icon = described_class.new("user", variant: "outline")
 
-        expect(icon.options[:"stroke-width"]).to eq("1.5")
+        expect(icon.options[:"stroke-width"]).to eq(1.5)
+      end
+
+      it "can be customized" do
+        icon = described_class.new("user", variant: "outline", "stroke-width": 2)
+
+        expect(icon.options[:"stroke-width"]).to eq(2)
       end
     end
 
@@ -227,11 +235,23 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
         expect(icon.options[:"stroke-width"]).to be_nil
       end
+
+      it "cannot be customized" do
+        icon = described_class.new("user", variant: "solid", "stroke-width": 2)
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
     end
 
     context "when variant is mini" do
       it "does not set the stroke width" do
         icon = described_class.new("user", variant: "mini")
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+
+      it "cannot be customized" do
+        icon = described_class.new("user", variant: "mini", "stroke-width": 2)
 
         expect(icon.options[:"stroke-width"]).to be_nil
       end
