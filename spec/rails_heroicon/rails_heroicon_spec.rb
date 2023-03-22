@@ -1,5 +1,3 @@
-require "byebug"
-
 RSpec.describe RailsHeroicon::RailsHeroicon do
   describe "#initialize" do
     it "sets the icon name" do
