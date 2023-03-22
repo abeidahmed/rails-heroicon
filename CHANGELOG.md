@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+- Remove `stroke-width` from `svg` path if it is present
+- Make `stroke-width` customizable
+
+  ```erb
+  <%= heroicon "user", variant: "outline", "stroke-width": 2 %>
+  ```
+
 ## 2.1.1
 
 - Fix mini `information-circle` icon alignment
