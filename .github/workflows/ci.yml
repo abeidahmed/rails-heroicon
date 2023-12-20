@@ -47,4 +47,4 @@ jobs:
           gem install bundler:2.2.33
           bundle install --jobs 4 --retry 3 --path=vendor/bundle
       - name: Run tests
-        run: bundle exec rspec
+        run: bundle exec rake test
