@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add micro icons
+
 ## 2.1.2
 
 - Remove `stroke-width` from `svg` path if it is present
