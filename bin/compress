@@ -12,7 +12,7 @@ module Compress
 
   def self.start!
     icons_count = Hash.new(0)
-    icons = Dir[File.join(File.dirname(__FILE__), "../icons/**/*.svg")]
+    icons = Dir[File.join(File.dirname(__FILE__), "../icons/**/*.svg")].sort
 
     FileUtils.mkdir_p(DIRECTORY)
     FileUtils.rm_rf(Dir.glob("#{DIRECTORY}/*"))
@@ -26,16 +26,16 @@ module Compress
       # Issue: https://github.com/abeidahmed/rails-heroicon/issues/37
       doc.css("path").remove_attr("stroke-width")
       doc.css("path").remove_attr("stroke") if variant == "outline"
-      doc.css("path").remove_attr("fill") if %w[solid mini].include?(variant)
+      doc.css("path").remove_attr("fill") if %w[solid mini micro].include?(variant)
 
       icon_name = File.basename(file_name, ".svg")
       hash[variant][icon_name] = doc.at_css("svg").inner_html.gsub(/^[\s\t]*|[\s\t]*\n/, "").strip
       icons_count[variant.to_sym] += 1
-    end
+    end.sort.to_h
 
     File.write("#{DIRECTORY}/#{FILE_NAME}", JSON.pretty_generate(icon_hash))
 
-    puts "Finished compressing #{icons_count[:outline]} outline, #{icons_count[:solid]} solid, and #{icons_count[:mini]} mini icons."
+    puts "Finished compressing #{icons_count[:outline]} outline, #{icons_count[:solid]} solid, #{icons_count[:mini]} mini icons, and #{icons_count[:micro]} micro icons."
   end
 end
 

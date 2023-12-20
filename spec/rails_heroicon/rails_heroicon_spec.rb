@@ -27,7 +27,7 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
     it "raises if variant is undefined" do
       expect do
         described_class.new("user", variant: "unknown")
-      end.to raise_error(RailsHeroicon::UndefinedVariant, "Variant should be one of outline, solid, mini")
+      end.to raise_error(RailsHeroicon::UndefinedVariant, "Variant should be one of outline, solid, mini, micro")
     end
   end
 
@@ -91,6 +91,14 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
         expect(icon.svg_path).not_to match(/fill=/)
       end
     end
+
+    context "when being a micro variant" do
+      it "does not have the fill attribute" do
+        icon = described_class.new("user", variant: "micro")
+
+        expect(icon.svg_path).not_to match(/fill=/)
+      end
+    end
   end
 
   describe "fill and stroke" do
@@ -110,6 +118,13 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
     it "sets the stroke to none and fill as currentColor if variant is mini" do
       icon = described_class.new("user", variant: "mini")
+
+      expect(icon.options[:stroke]).to eq("none")
+      expect(icon.options[:fill]).to eq("currentColor")
+    end
+
+    it "sets the stroke to none and fill as currentColor if variant is micro" do
+      icon = described_class.new("user", variant: "micro")
 
       expect(icon.options[:stroke]).to eq("none")
       expect(icon.options[:fill]).to eq("currentColor")
@@ -159,6 +174,12 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
       icon = described_class.new("user", variant: "mini")
 
       expect(icon.options[:viewBox]).to eq("0 0 20 20")
+    end
+
+    it "sets the viewBox to 16 if variant is micro" do
+      icon = described_class.new("user", variant: "micro")
+
+      expect(icon.options[:viewBox]).to eq("0 0 16 16")
     end
   end
 
@@ -210,6 +231,22 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
         expect(icon.options[:width]).to eq(32)
       end
     end
+
+    context "when variant is micro" do
+      it "size defaults to 16 if variant is mini" do
+        icon = described_class.new("user", variant: "micro")
+
+        expect(icon.options[:height]).to eq(16)
+        expect(icon.options[:width]).to eq(16)
+      end
+
+      it "size does not default to 16 if user has explicitly stated" do
+        icon = described_class.new("user", variant: "micro", size: 32)
+
+        expect(icon.options[:height]).to eq(32)
+        expect(icon.options[:width]).to eq(32)
+      end
+    end
   end
 
   describe "stroke-width" do
@@ -250,6 +287,20 @@ RSpec.describe RailsHeroicon::RailsHeroicon do
 
       it "cannot be customized" do
         icon = described_class.new("user", variant: "mini", "stroke-width": 2)
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+    end
+
+    context "when variant is micro" do
+      it "does not set the stroke width" do
+        icon = described_class.new("user", variant: "micro")
+
+        expect(icon.options[:"stroke-width"]).to be_nil
+      end
+
+      it "cannot be customized" do
+        icon = described_class.new("user", variant: "micro", "stroke-width": 2)
 
         expect(icon.options[:"stroke-width"]).to be_nil
       end
