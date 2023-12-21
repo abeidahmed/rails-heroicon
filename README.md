@@ -90,9 +90,9 @@ need to set the `size` attribute on the helper method.
 <%= heroicon "user", size: 20 %>
 ```
 
-If the `variant` is set as `outline` or `solid`, `size` automatically defaults to `24`,
-if the `variant` is set as `mini`, `size` automatically defaults to `20`, and if the `variant`
-is set as `micro`, `size` automatically defaults to `16`. However, this can be over-written with
+If the `variant` is set as `outline` or `solid`, `size` defaults to `24`,
+if the `variant` is set as `mini`, `size` defaults to `20`, and if the `variant`
+is set as `micro`, `size` defaults to `16`. However, this can be over-written with
 the `size` attribute.
 
 ### Accessibility
