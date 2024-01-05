@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Drop ruby 2.7 version
+
 ## 2.2.0
 
 - Add micro icons
