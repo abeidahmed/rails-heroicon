@@ -4,7 +4,7 @@ Ruby on Rails views helper for the awesome heroicons by Steve Schoger. To see
 all the icons visit [heroicons](https://heroicons.com/).
 
 The latest version of this gem is built with heroicons
-[v2.1.1](https://github.com/tailwindlabs/heroicons/releases/tag/v2.1.1) (288 icons).
+[v2.1.3](https://github.com/tailwindlabs/heroicons/releases/tag/v2.1.3) (288 icons).
 
 > This gem has no official affiliation with [Tailwind Labs](https://github.com/tailwindlabs),
 > yet.
