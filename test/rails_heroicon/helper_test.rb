@@ -6,10 +6,6 @@ module RailsHeroicon
     include ::RailsHeroicon::Helper
     include RunInitializer
 
-    def setup
-      run_initializer
-    end
-
     def test_attributes
       icon = heroicon("user", class: "text-red-600", data: {foo: "bar"})
       doc = Nokogiri::HTML::DocumentFragment.parse(icon)

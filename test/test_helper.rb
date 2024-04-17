@@ -6,6 +6,19 @@ require "rails/railtie"
 require "rails_heroicon/railtie"
 
 module RunInitializer
+  def before_setup
+    save_cache_store
+  end
+
+  def setup
+    run_initializer
+  end
+
+  def teardown
+    reset_cache_store
+    run_initializer
+  end
+
   def run_initializer
     ::RailsHeroicon::Railtie.initializers.find { |i| i.name == "rails_heroicon.cache" }.bind(RailsHeroicon::Railtie).run
   end
