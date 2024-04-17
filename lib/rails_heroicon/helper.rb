@@ -4,7 +4,6 @@ module RailsHeroicon
   module Helper
     include ActionView::Helpers::TagHelper
 
-    mattr_accessor :icon_cache, default: {}
     # To add a heroicon, call <tt><%= heroicon "icon_name" %></tt> on your erb template.
     # Head over to https://heroicons.com to view all the icons.
     #
@@ -38,13 +37,12 @@ module RailsHeroicon
     # if <tt>aria-label</tt> is set, then <tt>role=img</tt> is set automatically.
     def heroicon(symbol, title: nil, **options)
       cache_key = [symbol, title, options]
-      return icon_cache[cache_key] if icon_cache[cache_key]
 
-      icon = RailsHeroicon.new(symbol, **options)
-      title_tag = content_tag(:title, title) if title
-      tag = content_tag(:svg, title_tag.to_s.html_safe + icon.svg_path.html_safe, icon.options)
-      icon_cache[cache_key] = tag
-      tag
+      ::RailsHeroicon.cache.fetch(cache_key) do
+        icon = RailsHeroicon.new(symbol, **options)
+        title_tag = content_tag(:title, title) if title
+        content_tag(:svg, title_tag.to_s.html_safe + icon.svg_path.html_safe, icon.options)
+      end
     end
   end
 end
