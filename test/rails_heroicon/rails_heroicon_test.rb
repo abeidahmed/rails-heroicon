@@ -127,8 +127,8 @@ module RailsHeroicon
 
     private
 
-    def icon(name: "user", **options)
-      RailsHeroicon.new(name, **options)
+    def icon(name: "user", **)
+      RailsHeroicon.new(name, **)
     end
   end
 end

@@ -107,6 +107,12 @@ passed into the `title` option will be rendered inside of a
 `<title>` tag within the rendered SVG, which modern browsers will lean on to
 display a tooltip on hover.
 
+### Caching
+
+Like with Rails, you can provide `config.rails_heroicon_cache_store` to change the cache store.
+
+By default, caching uses `:memory_store`
+
 ## Development
 
 - Clone the repo

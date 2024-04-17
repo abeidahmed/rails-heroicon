@@ -6,4 +6,8 @@ require_relative "rails_heroicon/railtie" if defined? Rails
 module RailsHeroicon
   ICON_PATH = File.join(File.dirname(__FILE__), "../compressed/icons.json")
   ICONS = JSON.parse(File.read(ICON_PATH)).freeze
+
+  class << self
+    attr_accessor :cache
+  end
 end

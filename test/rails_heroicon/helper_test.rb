@@ -4,6 +4,7 @@ require "rails_heroicon/helper"
 module RailsHeroicon
   class HelperTest < Minitest::Test
     include ::RailsHeroicon::Helper
+    include RunInitializer
 
     def test_attributes
       icon = heroicon("user", class: "text-red-600", data: {foo: "bar"})
