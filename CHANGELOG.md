@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 2.3.0
+
 - Add new icons (`arrow-turn-*`, `bold`, `calendar-date-range`, `divide`, `document-currency-*`, `equals`, `h1`, `h2`, `h3`, `italic`, `link-slash`, `numbered-list`, `percent-badge`, `slash`, `strikethrough`, `underline`)
 - Drop ruby 2.7 version
 
